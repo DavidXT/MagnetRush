@@ -4,7 +4,8 @@ public class PlayerMovement : MonoBehaviour {
     private static readonly int SPEED_X = Animator.StringToHash("SpeedX");
     private static readonly int SPEED_Y = Animator.StringToHash("SpeedY");
 
-    public float playerSpeed;
+    public float playerForwardSpeed;
+    public float playerSideSpeed;
     //private Animator _animator;
     [SerializeField] private DynamicJoystick _joystick;
     private Vector3 _playerInputMovement;
@@ -20,6 +21,11 @@ public class PlayerMovement : MonoBehaviour {
         //game = GameManager.instance;
     }
 
+    private void Update()
+    {
+        transform.position -= Vector3.back * playerForwardSpeed * Time.deltaTime;
+    }
+
     protected void FixedUpdate() {
         if (game.state != States.Playing) {
             return;
@@ -29,15 +35,13 @@ public class PlayerMovement : MonoBehaviour {
 
     private void Move() {
         this._playerInputMovement = new Vector3(this._joystick.Horizontal, 0, 0);
-        Vector3 movement = cam.transform.TransformDirection(this._playerInputMovement) * this.playerSpeed;
+        Vector3 movement = cam.transform.TransformDirection(this._playerInputMovement) * this.playerSideSpeed;
         if (this.game.state == States.Playing && movement.magnitude > 0.1f) {
             this._rbCharacter.velocity = new Vector3(movement.x, this._rbCharacter.velocity.y, movement.z);
 
             //Rotation
             Vector3 targetRot = movement;
             targetRot.y = 0;
-            Quaternion targetRotation = Quaternion.LookRotation(targetRot);
-            this._rbCharacter.MoveRotation(targetRotation);
         }
         else {
             this._rbCharacter.velocity = new Vector3(0, this._rbCharacter.velocity.y, 0);
