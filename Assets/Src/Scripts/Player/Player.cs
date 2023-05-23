@@ -16,15 +16,18 @@ public class Player : MonoBehaviour {
         MagneticPart parent = this.magneticRoot;
         for (int i = 0; i < this.startingMagnetPart; i++) {
             MagneticPart newPart = Instantiate(ResourcesManager.Instance.magneticPartPrefab, this.transform.position, this.transform.rotation, null);
-            Debug.Log(parent);
             newPart.Attach(parent);
             parent = newPart;
         }
     }
 
     private void OnTriggerEnter(Collider other) {
-        if (other.TryGetComponent(out MagneticPart magneticPart)) {
-            this.magneticRoot.AttachToRandom(magneticPart);
+        if (other.TryGetComponent(out CollectibleMagnet magnet)) {
+            MagneticPart newPart = Instantiate(ResourcesManager.Instance.magneticPartPrefab, magnet.transform.position, magnet.transform.rotation, null);
+            MagneticPart parent = this.magneticRoot.GetRandomToAttach();
+            
+            Destroy(magnet.gameObject);
+            newPart.Attach(parent);
         }
     }
 }

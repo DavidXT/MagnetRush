@@ -63,8 +63,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81b823f4eb14b4fe8986e9a25797c36f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerForwardSpeed: 0
-  playerSideSpeed: 0
+  playerForwardSpeed: 5
+  playerSideSpeed: 3
   _joystick: {fileID: 0}
   game: {fileID: 0}
   cam: {fileID: 0}

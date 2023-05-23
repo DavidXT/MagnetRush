@@ -217,18 +217,14 @@ public class MagneticPart : MonoBehaviour {
         MagneticPart result = partAvailable.GetRandom();
         return result == this ? result : result.GetRandomChildren();
     }
-    
-    public void AttachToRandom(MagneticPart partToAttach) {
+
+    public MagneticPart GetRandomToAttach() {
         if (this._childrenPart.Count == 0) {
-            partToAttach.Attach(this);
+            return this;
         }
-        else {
-            if (this.CanAttachTo() && Random.value>.5f) {
-                partToAttach.Attach(this);
-            }
-            else {
-                this._childrenPart.GetRandom().AttachToRandom(partToAttach);
-            }
+        if (this.CanAttachTo() && Random.value > .5f) {
+            return this;
         }
+        return this._childrenPart.GetRandom().GetRandomToAttach();
     }
 }
