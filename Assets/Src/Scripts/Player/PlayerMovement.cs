@@ -23,6 +23,10 @@ public class PlayerMovement : MonoBehaviour {
 
     private void Update()
     {
+        if (game.state != States.Playing)
+        {
+            return;
+        }
         transform.position -= Vector3.back * playerForwardSpeed * Time.deltaTime;
     }
 
@@ -34,6 +38,8 @@ public class PlayerMovement : MonoBehaviour {
     }
 
     private void Move() {
+        if(game.state != States.Playing) 
+            return;
         this._playerInputMovement = new Vector3(this._joystick.Horizontal, 0, 0);
         Vector3 movement = cam.transform.TransformDirection(this._playerInputMovement) * this.playerSideSpeed;
         if (this.game.state == States.Playing && movement.magnitude > 0.1f) {
