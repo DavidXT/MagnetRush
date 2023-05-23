@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using DG.Tweening;
 using UnityEngine;
+using Random = UnityEngine.Random;
 public class MagneticPart : MonoBehaviour {
     private const float DELAY_CHECK_NEAREST_PART = .5f;
     [Header("References")]
@@ -159,7 +160,7 @@ public class MagneticPart : MonoBehaviour {
         this.OnPartAttachedNonStatic?.Invoke(this);
     }
 
-    public bool CanAttachTo() {
+    public virtual bool CanAttachTo() {
         return this.IsAttached() && this._childrenPart.Count < this.maxChildrenQuantity;
     }
 
@@ -215,5 +216,19 @@ public class MagneticPart : MonoBehaviour {
         partAvailable.Add(this);
         MagneticPart result = partAvailable.GetRandom();
         return result == this ? result : result.GetRandomChildren();
+    }
+    
+    public void AttachToRandom(MagneticPart partToAttach) {
+        if (this._childrenPart.Count == 0) {
+            partToAttach.Attach(this);
+        }
+        else {
+            if (this.CanAttachTo() && Random.value>.5f) {
+                partToAttach.Attach(this);
+            }
+            else {
+                this._childrenPart.GetRandom().AttachToRandom(partToAttach);
+            }
+        }
     }
 }

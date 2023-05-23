@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3602305416960689879}
   - component: {fileID: 1782222319178747792}
   - component: {fileID: 7773842946790560173}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -106,7 +106,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3657575228591788476}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: _Visual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -142,7 +142,7 @@ GameObject:
   - component: {fileID: 2188998021860202661}
   - component: {fileID: 4731356139961807806}
   - component: {fileID: 350596762503098183}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: MagneticPart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -183,9 +183,9 @@ MonoBehaviour:
   attachParticle: {fileID: 0}
   myCollider: {fileID: 7773842946790560173}
   maxChildrenQuantity: 1
-  detectionDistance: 6
-  attractionForce: 40
-  attachDistance: 2
+  detectionDistance: 0
+  attractionForce: 0
+  attachDistance: 0
 --- !u!135 &4731356139961807806
 SphereCollider:
   m_ObjectHideFlags: 0

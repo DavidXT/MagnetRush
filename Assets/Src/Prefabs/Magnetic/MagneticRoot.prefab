@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3433524102925825308}
   - component: {fileID: 3398002876895479144}
   - component: {fileID: 7690144795872048108}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -109,7 +109,7 @@ GameObject:
   - component: {fileID: 3105128893355444414}
   - component: {fileID: 5123275599233846832}
   - component: {fileID: 2130708507056226124}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: MagneticRoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using DG.Tweening;
+using UnityEngine;
 public class MagneticRoot : MagneticPart {
     public List<MagneticPart> allChildren { get; set; } = new();
 
@@ -17,6 +18,10 @@ public class MagneticRoot : MagneticPart {
 
     public bool IsEmpty() {
         return this._childrenPart.Count == 0;
+    }
+    
+    public override bool CanAttachTo() {
+        return this._childrenPart.Count < this.maxChildrenQuantity;
     }
 
     public MagneticPart GetFurthestPart() {
