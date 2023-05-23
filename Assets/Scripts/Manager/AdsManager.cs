@@ -4,6 +4,7 @@ using UnityEngine.Advertisements;
 
 public class AdsManager : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowListener, IUnityAdsInitializationListener
 {
+    public static AdsManager instance;
     [SerializeField] private bool testMode = true;
     [SerializeField] private BannerPosition bannerPosition = BannerPosition.BOTTOM_CENTER;
 
@@ -27,8 +28,18 @@ public class AdsManager : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowLis
     public Action OnShowAdsComplete;
     public Action OnShowAdsRewardedComplete;
 
+
     private void Start()
     {
+        if (instance != null && instance != this)
+        {
+            Destroy(this.gameObject);
+            return;
+        }
+        else
+        {
+            instance = this;
+        }
 #if UNITY_ANDROID || UNITY_IOS
         Advertisement.Initialize(GAME_ID, testMode, this);
         Advertisement.Banner.SetPosition(bannerPosition);
