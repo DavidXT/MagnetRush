@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 public class Player : MonoBehaviour {
     [Header("References")]
@@ -12,22 +11,31 @@ public class Player : MonoBehaviour {
         this.InstantiateStartingPart();
     }
 
+    private void OnTriggerEnter(Collider other) {
+        if (other.TryGetComponent(out CollectibleMagnet magnet)) {
+            magnet.DisableCollider();
+            
+            MagneticPart parent = this.magneticRoot.GetRandomToAttach();
+            MagneticPart newPart = Instantiate(ResourcesManager.Instance.magneticPartPrefab, parent.transform.position, parent.transform.rotation, null);
+            newPart.gameObject.SetActive(false);
+            newPart.Attach(parent);
+                
+            float height = Random.Range(4, 6f);
+            Vector3 halfPointOffset = new(Random.Range(-2, 2f), Random.Range(-1, 1f), 0);
+            float duration = .5f;
+            this.StartCoroutine(BezierCurves.JumpIn(magnet.transform, parent.transform, Vector3.zero, height, halfPointOffset, duration, false, () => {
+                newPart.gameObject.SetActive(true);
+                Destroy(magnet.gameObject);
+            }));
+        }
+    }
+
     private void InstantiateStartingPart() {
         MagneticPart parent = this.magneticRoot;
         for (int i = 0; i < this.startingMagnetPart; i++) {
             MagneticPart newPart = Instantiate(ResourcesManager.Instance.magneticPartPrefab, this.transform.position, this.transform.rotation, null);
             newPart.Attach(parent);
             parent = newPart;
-        }
-    }
-
-    private void OnTriggerEnter(Collider other) {
-        if (other.TryGetComponent(out CollectibleMagnet magnet)) {
-            MagneticPart newPart = Instantiate(ResourcesManager.Instance.magneticPartPrefab, magnet.transform.position, magnet.transform.rotation, null);
-            MagneticPart parent = this.magneticRoot.GetRandomToAttach();
-            
-            Destroy(magnet.gameObject);
-            newPart.Attach(parent);
         }
     }
 }

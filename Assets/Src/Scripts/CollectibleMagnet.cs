@@ -2,17 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CollectibleMagnet : MonoBehaviour
-{
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+public class CollectibleMagnet : MonoBehaviour {
+    [Header("References")]
+    public Collider myCollider;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    public void DisableCollider() {
+        this.myCollider.enabled = false;
     }
 }
