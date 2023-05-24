@@ -45,7 +45,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _BottomExponent: 1
-    - _CloudsHeight: 0.02
+    - _CloudsHeight: -0.05
     - _CloudsRotation: 0
     - _Exponent: 1
     - _Exposure: 1
