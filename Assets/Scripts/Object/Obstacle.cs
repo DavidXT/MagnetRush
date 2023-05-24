@@ -10,7 +10,7 @@ public class Obstacle : MonoBehaviour
         {
             if (GameManager.instance != null)
             {
-                GameManager.instance.state = States.GameOver;
+                GameManager.instance.GameOver();
             }
         }
     }

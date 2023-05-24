@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private float scoreSpeed;
     [SerializeField] private TextMeshProUGUI scoreText;
     [SerializeField] private TextMeshProUGUI magnetText;
+    [SerializeField] private GameObject gameOverPanel;
     // Start is called before the first frame update
     void Start()
     {
@@ -63,5 +64,9 @@ public class GameManager : MonoBehaviour
     {
         state = States.GameOver;
         //Show gameOverPanel + Stop score counting
+        if(gameOverPanel != null)
+        {
+            gameOverPanel.SetActive(true);
+        }
     }
 }

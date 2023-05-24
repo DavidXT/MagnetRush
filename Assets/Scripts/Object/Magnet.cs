@@ -12,7 +12,6 @@ public class Magnet : MonoBehaviour
             {
                 GameManager.instance.IncreaseMagnet(1);
             }
-            Destroy(this.gameObject);
         }
     }
 }
