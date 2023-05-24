@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public enum States {Playing, GameOver, Pause}
 public class GameManager : MonoBehaviour
@@ -14,6 +15,7 @@ public class GameManager : MonoBehaviour
     private float playerScore = 0;
     [SerializeField] private float scoreSpeed;
     [SerializeField] private TextMeshProUGUI scoreText;
+    [SerializeField] private TextMeshProUGUI gameOverScoreText;
     [SerializeField] private TextMeshProUGUI magnetText;
     [SerializeField] private GameObject gameOverPanel;
     // Start is called before the first frame update
@@ -57,6 +59,7 @@ public class GameManager : MonoBehaviour
     public void IncreaseMagnet(int i)
     {
         playerMagnet += i;
+        playerScore += playerMagnet;
         UpdateMagnetText();
     }
 
@@ -67,6 +70,17 @@ public class GameManager : MonoBehaviour
         if(gameOverPanel != null)
         {
             gameOverPanel.SetActive(true);
+            UpdateScore(Mathf.RoundToInt(playerScore));
         }
+    }
+
+    private void UpdateScore(int score)
+    {
+        if(score > PlayerPrefs.GetInt("MagnetRush"+ SceneManager.GetActiveScene().name))
+        {
+            PlayerPrefs.SetInt("MagnetRush" + SceneManager.GetActiveScene().name, score);
+        }
+        gameOverScoreText.text = PlayerPrefs.GetInt("MagnetRush" + SceneManager.GetActiveScene().name).ToString();
+
     }
 }
