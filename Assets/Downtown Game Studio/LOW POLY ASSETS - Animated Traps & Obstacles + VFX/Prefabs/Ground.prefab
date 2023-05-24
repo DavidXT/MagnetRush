@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 353315051974847787}
   - component: {fileID: 3695451707678745230}
   - component: {fileID: 1489590824095028804}
-  - component: {fileID: 246997967461080519}
+  - component: {fileID: 6933339239948165255}
   m_Layer: 0
   m_Name: Ground
   m_TagString: Ground
@@ -28,7 +28,8 @@ Transform:
   m_GameObject: {fileID: 1129535469629093777}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 3, y: 8, z: 3}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -52,6 +53,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -82,7 +84,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &246997967461080519
+--- !u!65 &6933339239948165255
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -90,8 +92,8 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1129535469629093777}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 6.000003, y: 0.5796235, z: 3.000006}
-  m_Center: {x: 0, y: 0.12175152, z: 0}
+  m_Size: {x: 6.000003, y: 0.33612046, z: 3.000006}
+  m_Center: {x: 0, y: 0, z: 0}
