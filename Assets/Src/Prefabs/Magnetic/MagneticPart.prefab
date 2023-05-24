@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3602305416960689879}
   - component: {fileID: 1782222319178747792}
   - component: {fileID: 7773842946790560173}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -106,7 +106,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3657575228591788476}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: _Visual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -142,7 +142,7 @@ GameObject:
   - component: {fileID: 2188998021860202661}
   - component: {fileID: 4731356139961807806}
   - component: {fileID: 350596762503098183}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: MagneticPart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -285,6 +285,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 06ff52d6ab9933b4398c309adb3fe10a, type: 3}
       propertyPath: m_Name
       value: Magnetix
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 06ff52d6ab9933b4398c309adb3fe10a, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 06ff52d6ab9933b4398c309adb3fe10a, type: 3}
