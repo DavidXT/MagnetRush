@@ -31,6 +31,7 @@ public class GameManager : MonoBehaviour
         {
             instance = this;
         }
+        state = States.Playing;
     }
 
     private void Update()
@@ -39,7 +40,6 @@ public class GameManager : MonoBehaviour
         playerScore += scoreSpeed * Time.deltaTime;
         UpdateScoreText();
     }
-
     public void UpdateScoreText()
     {
         if(scoreText != null)

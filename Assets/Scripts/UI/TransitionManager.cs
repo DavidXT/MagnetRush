@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+[DefaultExecutionOrder(100)]
 public class TransitionManager : MonoBehaviour
 {
     public void ChangeScene(string sceneName)
@@ -12,8 +13,12 @@ public class TransitionManager : MonoBehaviour
 
     public void LoadLevel(string index)
     {
-        AdsManager.instance.PlayAdsInterstitial();
-        AdsManager.instance.OnShowAdsComplete += () => ChangeScene("Level"+index);
+        if (AdsManager.instance != null)
+        {
+            AdsManager.instance.PlayAdsInterstitial();
+            AdsManager.instance.OnShowAdsComplete = () => ChangeScene("Level" + index);
+        }
+
     }
 
     public void ReloadGame()

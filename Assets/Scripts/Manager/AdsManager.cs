@@ -2,17 +2,14 @@ using System;
 using UnityEngine;
 using UnityEngine.Advertisements;
 
+[DefaultExecutionOrder(10)]
 public class AdsManager : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowListener, IUnityAdsInitializationListener
 {
     public static AdsManager instance;
     [SerializeField] private bool testMode = true;
     [SerializeField] private BannerPosition bannerPosition = BannerPosition.BOTTOM_CENTER;
 
-#if UNITY_IOS
-    private const string GAME_ID = "5270504";
-    private const string PLACEMENT_ID = "Interstitial_iOS";
-        private const string PLACEMENTREWARDED_ID = "Rewarded_IOS";
-#elif UNITY_ANDROID
+#if UNITY_ANDROID
     private const string GAME_ID = "5270505";
     private const string PLACEMENT_ID = "Interstitial_Android";
     private const string PLACEMENTBANNER_ID = "Banner_Android";
@@ -27,10 +24,15 @@ public class AdsManager : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowLis
     public Action OnShowAdsStart;
     public Action OnShowAdsComplete;
     public Action OnShowAdsRewardedComplete;
+    public bool isInit = false;
 
-
-    private void Start()
+    private void Awake()
     {
+#if UNITY_ANDROID
+        Advertisement.Initialize(GAME_ID, testMode, this);
+        Advertisement.Banner.SetPosition(bannerPosition);
+        Advertisement.Banner.Load(PLACEMENTBANNER_ID);
+#endif
         if (instance != null && instance != this)
         {
             Destroy(this.gameObject);
@@ -39,14 +41,21 @@ public class AdsManager : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowLis
         else
         {
             instance = this;
+            DontDestroyOnLoad(gameObject);
         }
-#if UNITY_ANDROID || UNITY_IOS
-        Advertisement.Initialize(GAME_ID, testMode, this);
-        Advertisement.Banner.SetPosition(bannerPosition);
-        Advertisement.Banner.Load(PLACEMENTBANNER_ID);
-#endif
-}
+    }
 
+    void FixedUpdate()
+    {
+#if UNITY_ANDROID
+        if (!isInit)
+        {
+            Advertisement.Initialize(GAME_ID, testMode, this);
+            Advertisement.Banner.SetPosition(bannerPosition);
+            Advertisement.Banner.Load(PLACEMENTBANNER_ID);
+        }
+#endif
+    }
     #region Public Methods
 
     #region Initialization
@@ -54,6 +63,7 @@ public class AdsManager : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowLis
     public void OnInitializationComplete()
     {
         Advertisement.Load(PLACEMENT_ID, this);
+        isInit = true;
     }
     
     public void OnInitializationFailed(UnityAdsInitializationError error, string message) { }
@@ -78,12 +88,10 @@ public class AdsManager : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowLis
     
     public void PlayAdsInterstitial()
     {
-#if UNITY_ANDROID || UNITY_IOS
         if (Advertisement.isInitialized)
         {
             Advertisement.Show(PLACEMENT_ID, this);
         }
-#endif
     } 
     
     public void PlayAdsRewarded()
@@ -98,6 +106,7 @@ public class AdsManager : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowLis
     
     public void OnUnityAdsAdLoaded(string placementId)
     {
+        Debug.Log("Load Completed");
         // Optionally execute code if the Ad Unit successfully loads content.
     }
     
@@ -127,6 +136,7 @@ public class AdsManager : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowLis
 
         if (placementId.Equals(PLACEMENTREWARDED_ID))
         {
+            Debug.Log("LoadRewarded");
             Advertisement.Load(PLACEMENTREWARDED_ID, this);
             if (showCompletionState.Equals(UnityAdsShowCompletionState.COMPLETED))
             {
@@ -135,10 +145,12 @@ public class AdsManager : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowLis
         }
         else
         {
+            Debug.Log("LoadInterstitial");
             Advertisement.Load(PLACEMENT_ID, this);
             OnShowAdsComplete?.Invoke();
         }
     }
+
     
     #endregion
 
