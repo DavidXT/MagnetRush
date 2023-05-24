@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public enum States {Playing, GameOver, Pause}
+public enum States {Playing, GameOver, Pause, Win}
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
@@ -16,8 +16,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] private float scoreSpeed;
     [SerializeField] private TextMeshProUGUI scoreText;
     [SerializeField] private TextMeshProUGUI gameOverScoreText;
+    [SerializeField] private TextMeshProUGUI endGameTitle;
     [SerializeField] private TextMeshProUGUI magnetText;
-    [SerializeField] private GameObject gameOverPanel;
+    [SerializeField] private GameObject endGamePanel;
     // Start is called before the first frame update
     void Start()
     {
@@ -67,9 +68,21 @@ public class GameManager : MonoBehaviour
     {
         state = States.GameOver;
         //Show gameOverPanel + Stop score counting
-        if(gameOverPanel != null)
+        if(endGamePanel != null)
         {
-            gameOverPanel.SetActive(true);
+            endGameTitle.text = "GAME OVER";
+            endGamePanel.SetActive(true);
+            UpdateScore(Mathf.RoundToInt(playerScore));
+        }
+    }
+
+    public void WinGame()
+    {
+        state = States.Win;
+        if(endGamePanel != null)
+        {
+            endGameTitle.text = "YOU WIN";
+            endGamePanel.SetActive(true);
             UpdateScore(Mathf.RoundToInt(playerScore));
         }
     }
@@ -81,6 +94,6 @@ public class GameManager : MonoBehaviour
             PlayerPrefs.SetInt("MagnetRush" + SceneManager.GetActiveScene().name, score);
         }
         gameOverScoreText.text = PlayerPrefs.GetInt("MagnetRush" + SceneManager.GetActiveScene().name).ToString();
-
     }
+    
 }

@@ -10,9 +10,14 @@ public class TransitionManager : MonoBehaviour
         SceneManager.LoadScene(sceneName);
     }
 
-    public void LoadGame()
+    public void LoadLevel(string index)
     {
         AdsManager.instance.PlayAdsInterstitial();
-        AdsManager.instance.OnShowAdsComplete += () => ChangeScene("MainGame");
+        AdsManager.instance.OnShowAdsComplete += () => ChangeScene("Level"+index);
+    }
+
+    public void ReloadGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
