@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI endGameTitle;
     [SerializeField] private TextMeshProUGUI magnetText;
     [SerializeField] private GameObject endGamePanel;
+    [SerializeField] private GameObject joyStick;
     
     public Player player { get; set; }
     
@@ -73,6 +74,11 @@ public class GameManager : MonoBehaviour
         //Show gameOverPanel + Stop score counting
         if(endGamePanel != null)
         {
+            if (joyStick != null)
+            {
+                joyStick.SetActive(false);
+            }
+
             endGameTitle.text = "GAME OVER";
             endGamePanel.SetActive(true);
             UpdateScore(Mathf.RoundToInt(playerScore));
@@ -84,6 +90,11 @@ public class GameManager : MonoBehaviour
         state = States.Win;
         if(endGamePanel != null)
         {
+            if (joyStick != null)
+            {
+                joyStick.SetActive(false);
+            }
+
             endGameTitle.text = "YOU WIN";
             endGamePanel.SetActive(true);
             UpdateScore(Mathf.RoundToInt(playerScore));
