@@ -31,4 +31,9 @@ public class TransitionManager : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
+
+    public void LeaveGame()
+    {
+        Application.Quit();
+    }
 }
