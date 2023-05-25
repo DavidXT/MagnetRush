@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Unity.Services.Analytics;
 using Unity.Services.Core;
@@ -6,7 +7,10 @@ using UnityEngine.Analytics;
 
 public class AnalyticsManager : MonoBehaviour
 {
-    
+    private void Awake() {
+        DontDestroyOnLoad(this);
+    }
+
     async void Start() //Initialize Unity Services
     {
         try
@@ -19,7 +23,7 @@ public class AnalyticsManager : MonoBehaviour
         }
     }
 
-    //Example
+    //Example for custom event
     /*
     private void Update() {
         if (Input.GetKeyDown(KeyCode.Space)) {
