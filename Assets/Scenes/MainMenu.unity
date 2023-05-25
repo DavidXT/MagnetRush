@@ -1343,6 +1343,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   testMode: 1
   bannerPosition: 0
+  isInit: 0
 --- !u!4 &1546714664
 Transform:
   m_ObjectHideFlags: 0

@@ -15,10 +15,16 @@ public class TransitionManager : MonoBehaviour
     {
         if (AdsManager.instance != null)
         {
-            AdsManager.instance.PlayAdsInterstitial();
-            AdsManager.instance.OnShowAdsComplete = () => ChangeScene("Level" + index);
+            if (AdsManager.instance.isInit)
+            {
+                AdsManager.instance.PlayAdsInterstitial();
+                AdsManager.instance.OnShowAdsComplete = () => ChangeScene("Level" + index);
+            }
+            else
+            {
+                ChangeScene("Level" + index);
+            }
         }
-
     }
 
     public void ReloadGame()
