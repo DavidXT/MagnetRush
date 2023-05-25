@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public enum States {Playing, GameOver, Pause, Win}
+[DefaultExecutionOrder(-10)]
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
@@ -19,7 +20,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI endGameTitle;
     [SerializeField] private TextMeshProUGUI magnetText;
     [SerializeField] private GameObject endGamePanel;
-    // Start is called before the first frame update
+    
+    public Player player { get; set; }
+    
     void Start()
     {
         if (instance != null && instance != this)
