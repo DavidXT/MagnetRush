@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject joyStick;
     [SerializeField] private ParticleSystem playerExplosion;
     [SerializeField] private AudioSource explosionSound;
+    [SerializeField] private AudioSource ambianceSound;
     
     public Player player { get; set; }
     
@@ -77,6 +78,10 @@ public class GameManager : MonoBehaviour
             if (playerExplosion != null)
             {
                 playerExplosion.Play();
+                if(ambianceSound != null)
+                {
+                    ambianceSound.Stop();
+                }
                 if (explosionSound != null)
                 {
                     explosionSound.Play();
