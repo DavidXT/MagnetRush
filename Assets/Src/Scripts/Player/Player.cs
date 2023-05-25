@@ -5,6 +5,7 @@ public class Player : MonoBehaviour {
     public MagneticRoot magneticRoot;
     public ParticleSystem pSystem;
     public AudioSource collectiblesAudio;
+    public ParticleSystem pSystemDeath;
 
     [Header("Data")]
     public int startingMagnetPart = 1;
@@ -42,4 +43,5 @@ public class Player : MonoBehaviour {
             parent = newPart;
         }
     }
+
 }

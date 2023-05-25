@@ -21,6 +21,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI magnetText;
     [SerializeField] private GameObject endGamePanel;
     [SerializeField] private GameObject joyStick;
+    [SerializeField] private ParticleSystem playerExplosion;
+    [SerializeField] private AudioSource explosionSound;
     
     public Player player { get; set; }
     
@@ -70,18 +72,30 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
-        state = States.GameOver;
-        //Show gameOverPanel + Stop score counting
-        if(endGamePanel != null)
+        if (state == States.Playing)
         {
-            if (joyStick != null)
+            if (playerExplosion != null)
             {
-                joyStick.SetActive(false);
+                playerExplosion.Play();
+                if (explosionSound != null)
+                {
+                    explosionSound.Play();
+                }
             }
 
-            endGameTitle.text = "GAME OVER";
-            endGamePanel.SetActive(true);
-            UpdateScore(Mathf.RoundToInt(playerScore));
+            state = States.GameOver;
+            //Show gameOverPanel + Stop score counting
+            if (endGamePanel != null)
+            {
+                if (joyStick != null)
+                {
+                    joyStick.SetActive(false);
+                }
+
+                endGameTitle.text = "GAME OVER";
+                endGamePanel.SetActive(true);
+                UpdateScore(Mathf.RoundToInt(playerScore));
+            }
         }
     }
 

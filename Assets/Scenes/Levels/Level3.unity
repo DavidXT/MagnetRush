@@ -266,6 +266,10 @@ PrefabInstance:
       propertyPath: endGameTitle
       value: 
       objectReference: {fileID: 170172815}
+    - target: {fileID: 1642532455, guid: 7368467df53f8664a9daec24cd3af85a, type: 3}
+      propertyPath: playerExplosion
+      value: 
+      objectReference: {fileID: 672829210}
     - target: {fileID: 4228006746496948195, guid: 7368467df53f8664a9daec24cd3af85a, type: 3}
       propertyPath: m_Name
       value: UICanvas
@@ -368,7 +372,7 @@ PrefabInstance:
       objectReference: {fileID: 247467327}
     - target: {fileID: 4228006746601314281, guid: 7368467df53f8664a9daec24cd3af85a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ChangeScene
+      value: ReloadGame
       objectReference: {fileID: 0}
     - target: {fileID: 4228006747556268472, guid: 7368467df53f8664a9daec24cd3af85a, type: 3}
       propertyPath: m_IsActive
@@ -1241,6 +1245,38 @@ PrefabInstance:
       propertyPath: clearBehavior
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3897010785574011662, guid: a9c32f4bbb5d54d41af21bbd852a7fc8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3897010785730824352, guid: a9c32f4bbb5d54d41af21bbd852a7fc8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3897010785850341861, guid: a9c32f4bbb5d54d41af21bbd852a7fc8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3897010786580466303, guid: a9c32f4bbb5d54d41af21bbd852a7fc8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3897010786782015033, guid: a9c32f4bbb5d54d41af21bbd852a7fc8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3897010786792678161, guid: a9c32f4bbb5d54d41af21bbd852a7fc8, type: 3}
+      propertyPath: m_Intensity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4599470911718304473, guid: a9c32f4bbb5d54d41af21bbd852a7fc8, type: 3}
+      propertyPath: cameraShake.enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4599470911718304473, guid: a9c32f4bbb5d54d41af21bbd852a7fc8, type: 3}
+      propertyPath: cameraShake.useMainCamera
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6774023539090087696, guid: a9c32f4bbb5d54d41af21bbd852a7fc8, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -1289,6 +1325,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 7522751719693906041, guid: a9c32f4bbb5d54d41af21bbd852a7fc8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8907820307228102401, guid: a9c32f4bbb5d54d41af21bbd852a7fc8, type: 3}
       propertyPath: cam
       value: 
@@ -1303,6 +1343,11 @@ PrefabInstance:
       objectReference: {fileID: 678943077}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a9c32f4bbb5d54d41af21bbd852a7fc8, type: 3}
+--- !u!198 &672829210 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 3897010786801710935, guid: a9c32f4bbb5d54d41af21bbd852a7fc8, type: 3}
+  m_PrefabInstance: {fileID: 672829209}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &678943076 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8135886326569738822, guid: 56fae09712773584fb63896d473a98ee, type: 3}

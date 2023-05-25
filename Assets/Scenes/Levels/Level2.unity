@@ -292,6 +292,10 @@ PrefabInstance:
       propertyPath: endGameTitle
       value: 
       objectReference: {fileID: 1114778586}
+    - target: {fileID: 1642532455, guid: 7368467df53f8664a9daec24cd3af85a, type: 3}
+      propertyPath: playerExplosion
+      value: 
+      objectReference: {fileID: 672829210}
     - target: {fileID: 4228006746496948195, guid: 7368467df53f8664a9daec24cd3af85a, type: 3}
       propertyPath: m_Name
       value: UICanvas
@@ -1187,6 +1191,11 @@ PrefabInstance:
       objectReference: {fileID: 678943077}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a9c32f4bbb5d54d41af21bbd852a7fc8, type: 3}
+--- !u!198 &672829210 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 3897010786801710935, guid: a9c32f4bbb5d54d41af21bbd852a7fc8, type: 3}
+  m_PrefabInstance: {fileID: 672829209}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &678943076 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8135886326569738822, guid: 56fae09712773584fb63896d473a98ee, type: 3}

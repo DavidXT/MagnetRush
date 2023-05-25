@@ -542,6 +542,10 @@ PrefabInstance:
       propertyPath: endGameTitle
       value: 
       objectReference: {fileID: 909306938}
+    - target: {fileID: 1642532455, guid: 7368467df53f8664a9daec24cd3af85a, type: 3}
+      propertyPath: playerExplosion
+      value: 
+      objectReference: {fileID: 1506316237}
     - target: {fileID: 4228006746496948195, guid: 7368467df53f8664a9daec24cd3af85a, type: 3}
       propertyPath: m_Name
       value: UICanvas
@@ -1491,6 +1495,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1766546916198244297, guid: a9c32f4bbb5d54d41af21bbd852a7fc8, type: 3}
       propertyPath: clearBehavior
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3897010786792678161, guid: a9c32f4bbb5d54d41af21bbd852a7fc8, type: 3}
+      propertyPath: m_Intensity
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6774023539090087696, guid: a9c32f4bbb5d54d41af21bbd852a7fc8, type: 3}
@@ -2927,6 +2935,11 @@ Transform:
 Transform:
   m_CorrespondingSourceObject: {fileID: 6422942350156594104, guid: 6374ef3bb5bebab4e9f88766cce7967e, type: 3}
   m_PrefabInstance: {fileID: 20942573}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &1506316237 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 3897010786801710935, guid: a9c32f4bbb5d54d41af21bbd852a7fc8, type: 3}
+  m_PrefabInstance: {fileID: 672829209}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &1542144516 stripped
 Transform:
