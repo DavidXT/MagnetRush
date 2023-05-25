@@ -819,11 +819,11 @@ PlayerSettings:
   apiCompatibilityLevel: 6
   activeInputHandler: 0
   windowsGamepadBackendHint: 0
-  cloudProjectId: 8c86dce7-867e-4258-a468-951751682aec
+  cloudProjectId: d43d7f18-ab78-4973-b70d-c9a692ee9a1b
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
   projectName: MagnetGame
-  organizationId: waremon
+  organizationId: danguxt
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   playerDataPath: 

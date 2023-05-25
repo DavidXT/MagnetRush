@@ -3,6 +3,8 @@ public class Player : MonoBehaviour {
     [Header("References")]
     public PlayerMovement playerMovement;
     public MagneticRoot magneticRoot;
+    public ParticleSystem pSystem;
+    public AudioSource collectiblesAudio;
 
     [Header("Data")]
     public int startingMagnetPart = 1;
@@ -14,7 +16,9 @@ public class Player : MonoBehaviour {
     private void OnTriggerEnter(Collider other) {
         if (other.TryGetComponent(out CollectibleMagnet magnet)) {
             magnet.DisableCollider();
-            
+            collectiblesAudio.Play();
+            pSystem.Play();
+
             MagneticPart parent = this.magneticRoot.GetRandomToAttach();
             MagneticPart newPart = Instantiate(ResourcesManager.Instance.magneticPartPrefab, parent.transform.position, parent.transform.rotation, null);
             newPart.gameObject.SetActive(false);
